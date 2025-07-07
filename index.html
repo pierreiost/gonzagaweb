@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -250,7 +251,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -336,7 +337,8 @@
             letter-spacing: 0.5px;
         }
 
-        .loading-text, .error-text {
+        .loading-text,
+        .error-text {
             font-size: 10px;
             margin-top: 4px;
             font-weight: 600;
@@ -362,9 +364,17 @@
         }
 
         @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         /* Modal */
@@ -400,6 +410,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -569,7 +580,34 @@
             font-size: 12px;
         }
 
-        /* Responsive */
+        /* Responsive - Adjusts for better mobile grid */
+        @media (max-width: 480px) {
+            .quadras-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .quadra-image-container {
+                height: 100px;
+            }
+            
+            .quadra-name {
+                font-size: 12px;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .quadras-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 769px) {
+            .quadras-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+        }
+
         @media (max-width: 380px) {
             .nav-item {
                 font-size: 11px;
@@ -580,7 +618,7 @@
             .social-buttons {
                 width: 100%;
             }
-            
+
             .social-button {
                 width: 80%;
             }
@@ -598,21 +636,27 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Navbar -->
         <nav class="navbar">
             <div class="navbar-nav">
                 <button class="nav-item" onclick="scrollToSection('gonzaga')">
-                    O Gonzaga
+                    O Complexo
                 </button>
                 <button class="nav-item" onclick="scrollToSection('quadras')">
-                    Quadras
+                    Espaços
                 </button>
                 <button class="nav-item" onclick="scrollToSection('contato')">
                     Fale Conosco
@@ -625,15 +669,21 @@
             <!-- Seção O Gonzaga -->
             <div class="section" id="gonzaga">
                 <div class="section-header">
-                    <h2 class="section-title">O Gonzaga</h2>
+                    <h2 class="section-title">O Complexo</h2>
                     <div class="title-underline"></div>
                 </div>
                 <div class="gonzaga-card">
                     <div class="gonzaga-content">
                         <p class="gonzaga-description">
-                            Bem-vindo ao Gonzaga! Aqui você encontra as melhores quadras esportivas 
-                            da região de Pelotas. Venha praticar seu esporte favorito em um ambiente 
-                            seguro e bem estruturado.
+                            Bem-vindo ao Complexo Esportivo Gonzaga
+                            <br>
+                            O ponto de encontro do esporte em Pelotas!
+                            <br>
+                            Quadras de qualidade, ambiente seguro e estrutura completa pra você jogar, treinar ou
+                            comemorar.
+                            ⚽🏐🎾🏟️
+                            <br>
+                            Vem viver essa experiência com a gente!
                         </p>
                     </div>
                 </div>
@@ -642,13 +692,14 @@
             <!-- Seção Quadras -->
             <div class="section" id="quadras">
                 <div class="section-header">
-                    <h2 class="section-title">Quadras</h2>
+                    <h2 class="section-title">Espaços</h2>
                     <div class="title-underline"></div>
                 </div>
                 <div class="quadras-grid">
                     <div class="quadra-card" onclick="openImageModal('./quadra1.jpeg')">
                         <div class="quadra-image-container">
-                            <img src="./quadra1.jpeg" alt="Quadra Principal" class="quadra-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img src="./quadra1.jpeg" alt="Quadra Principal" class="quadra-image"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="quadra-placeholder" style="display: none;">Ver Foto 1</div>
                             <div class="image-overlay">Ver Foto</div>
                         </div>
@@ -656,7 +707,8 @@
                     </div>
                     <div class="quadra-card" onclick="openImageModal('./quadra2.jpeg')">
                         <div class="quadra-image-container">
-                            <img src="./quadra2.jpeg" alt="Quadra de Areia" class="quadra-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img src="./quadra2.jpeg" alt="Quadra de Areia" class="quadra-image"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="quadra-placeholder" style="display: none;">Ver Foto 2</div>
                             <div class="image-overlay">Ver Foto</div>
                         </div>
@@ -664,7 +716,8 @@
                     </div>
                     <div class="quadra-card" onclick="openImageModal('./quadra3.jpeg')">
                         <div class="quadra-image-container">
-                            <img src="./quadra3.jpeg" alt="Quadra Coberta" class="quadra-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img src="./quadra3.jpeg" alt="Quadra Coberta" class="quadra-image"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="quadra-placeholder" style="display: none;">Ver Foto 3</div>
                             <div class="image-overlay">Ver Foto</div>
                         </div>
@@ -672,11 +725,30 @@
                     </div>
                     <div class="quadra-card" onclick="openImageModal('./quadra4.jpeg')">
                         <div class="quadra-image-container">
-                            <img src="./quadra4.jpeg" alt="Quadra de Treino" class="quadra-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img src="./quadra4.jpeg" alt="Quadra de Treino" class="quadra-image"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="quadra-placeholder" style="display: none;">Ver Foto 4</div>
                             <div class="image-overlay">Ver Foto</div>
                         </div>
                         <div class="quadra-name">Quadra de Beach</div>
+                    </div>
+                    <div class="quadra-card" onclick="openImageModal('./tenis.jpeg')">
+                        <div class="quadra-image-container">
+                            <img src="./tenis.jpeg" alt="Quadra de Tênis" class="quadra-image"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="quadra-placeholder" style="display: none;">Ver Foto 5</div>
+                            <div class="image-overlay">Ver Foto</div>
+                        </div>
+                        <div class="quadra-name">Quadra de Tênis</div>
+                    </div>
+                    <div class="quadra-card" onclick="openImageModal('./salao.jpeg')">
+                        <div class="quadra-image-container">
+                            <img src="./salao.jpeg" alt="Salão" class="quadra-image"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="quadra-placeholder" style="display: none;">Ver Foto 6</div>
+                            <div class="image-overlay">Ver Foto</div>
+                        </div>
+                        <div class="quadra-name">Salão Panorâmico</div>
                     </div>
                 </div>
             </div>
@@ -692,11 +764,13 @@
                         Entre em contato conosco através das redes sociais:
                     </p>
                     <div class="social-buttons">
-                        <a href="https://instagram.com/complexogonzaga" target="_blank" class="social-button instagram-button">
+                        <a href="https://instagram.com/complexogonzaga" target="_blank"
+                            class="social-button instagram-button">
                             <img src="./instagram.png" alt="Instagram" class="social-icon-img">
                             Instagram
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=61577099866861" target="_blank" class="social-button facebook-button">
+                        <a href="https://www.facebook.com/profile.php?id=61577099866861" target="_blank"
+                            class="social-button facebook-button">
                             <img src="./facebook.png" alt="Facebook" class="social-icon-img">
                             Facebook
                         </a>
@@ -828,9 +902,9 @@
         // Utility functions
         function getWeatherIcon(condition) {
             if (!condition) return '❓';
-            
+
             const conditionLower = condition.toLowerCase();
-            
+
             if (conditionLower.includes('limpo') || conditionLower.includes('claro')) return '☀️';
             if (conditionLower.includes('nublado') || conditionLower.includes('nuvens')) return '☁️';
             if (conditionLower.includes('chuva')) return '🌧️';
@@ -838,13 +912,13 @@
             if (conditionLower.includes('neve')) return '❄️';
             if (conditionLower.includes('nevoeiro')) return '🌫️';
             if (conditionLower.includes('parcialmente')) return '⛅';
-            
+
             return '🌤️';
         }
 
         function getTemperatureColor(temp) {
             if (!temp) return '#666';
-            
+
             if (temp <= 10) return '#4A90E2';
             if (temp <= 20) return '#50C878';
             if (temp <= 30) return '#FFB84D';
@@ -855,7 +929,7 @@
         async function fetchWeatherData() {
             try {
                 const response = await fetch(METEOBLUE_API_URL);
-                
+
                 if (!response.ok) {
                     throw new Error(`Erro HTTP: ${response.status}`);
                 }
@@ -911,7 +985,7 @@
             if (data) {
                 const icon = getWeatherIcon(data.condicaoClima);
                 const color = getTemperatureColor(data.temperatura);
-                
+
                 weatherCard.className = 'weather-card active';
                 weatherContent.innerHTML = `
                     <span class="weather-icon">${icon}</span>
@@ -925,13 +999,13 @@
         // Weather modal functions
         function openWeatherModal() {
             if (!currentWeatherData) return;
-            
+
             const modal = document.getElementById('weatherModal');
             const modalContent = document.getElementById('weatherModalContent');
-            
+
             const icon = getWeatherIcon(currentWeatherData.condicaoClima);
             const color = getTemperatureColor(currentWeatherData.temperatura);
-            
+
             modalContent.innerHTML = `
                 <div class="main-weather-info">
                     <span class="modal-weather-icon">${icon}</span>
@@ -966,7 +1040,7 @@
                     </div>
                 </div>
             `;
-            
+
             modal.classList.add('show');
         }
 
@@ -979,7 +1053,7 @@
         function openImageModal(imageUrl) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
-            
+
             modalImage.src = imageUrl;
             modal.classList.add('show');
         }
@@ -1000,7 +1074,7 @@
         // Initialize weather data
         async function initWeather() {
             updateWeatherCard(null, true); // Show loading
-            
+
             try {
                 const weatherData = await fetchWeatherData();
                 currentWeatherData = weatherData;
@@ -1011,24 +1085,24 @@
         }
 
         // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initWeather();
-            
+
             // Close modals when clicking outside
-            document.getElementById('weatherModal').addEventListener('click', function(e) {
+            document.getElementById('weatherModal').addEventListener('click', function (e) {
                 if (e.target === this) {
                     closeWeatherModal();
                 }
             });
-            
-            document.getElementById('imageModal').addEventListener('click', function(e) {
+
+            document.getElementById('imageModal').addEventListener('click', function (e) {
                 if (e.target === this) {
                     closeImageModal();
                 }
             });
-            
+
             // Close modals with Escape key
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape') {
                     closeWeatherModal();
                     closeImageModal();
@@ -1040,4 +1114,5 @@
         setInterval(initWeather, 5 * 60 * 1000);
     </script>
 </body>
+
 </html>
