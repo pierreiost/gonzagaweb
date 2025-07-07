@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complexo Gonzaga - Pelotas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #FFFFFF;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            padding: 8px 16px 16px 16px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-item {
+            flex: 1;
+            padding: 12px 8px;
+            background-color: #FF4444;
+            border: none;
+            border-radius: 12px;
+            color: #FFFFFF;
+            font-weight: 700;
+            text-align: center;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(255, 68, 68, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover {
+            background-color: #E63939;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(255, 68, 68, 0.4);
+        }
+
+        .nav-item:active {
+            transform: translateY(0);
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding-top: 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Content area */
+        .content {
+            padding: 20px 0;
+            padding-bottom: 120px;
+        }
+
+        /* Seções */
+        .section {
+            margin: 0 16px 32px 16px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #333;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .title-underline {
+            width: 60px;
+            height: 3px;
+            background-color: #FF4444;
+            border-radius: 2px;
+            margin: 8px auto 0;
+        }
+
+        /* Gonzaga Card */
+        .gonzaga-card {
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            padding: 20px;
+            border: 2px solid #FF4444;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gonzaga-content {
+            padding-top: 16px;
+            border-top: 1px solid #F0F0F0;
+        }
+
+        .gonzaga-description {
+            font-size: 16px;
+            color: #666;
+            line-height: 24px;
+            text-align: center;
+        }
+
+        /* Quadras Grid */
+        .quadras-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .quadra-card {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            border: 1px solid #F0F0F0;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .quadra-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .quadra-image-container {
+            width: 100%;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 8px;
+            position: relative;
+            background-color: #F5F5F5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quadra-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .quadra-placeholder {
+            border: 2px dashed #E0E0E0;
+            background-color: #F5F5F5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 6px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .quadra-name {
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            padding: 20px;
+            border: 2px solid #FF4444;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-subtitle {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 22px;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        @media (min-width: 600px) {
+            .social-buttons {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+            min-width: 140px;
+        }
+
+        .social-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .instagram-button {
+            background-color: #E4405F;
+        }
+
+        .facebook-button {
+            background-color: #1877F2;
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+        }
+
+        .social-icon {
+            font-size: 18px;
+            margin-right: 8px;
+        }
+
+        /* Weather Card */
+        .weather-container {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            z-index: 1000;
+        }
+
+        .weather-card {
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            border: 2px solid #F0F0F0;
+            min-width: 80px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .weather-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .weather-card.active {
+            border-color: #FF4444;
+        }
+
+        .weather-card.error {
+            border-color: #FF6B6B;
+        }
+
+        .weather-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .temperature-text {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+
+        .location-text {
+            font-size: 10px;
+            color: #999;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .loading-text, .error-text {
+            font-size: 10px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .loading-text {
+            color: #999;
+        }
+
+        .error-text {
+            color: #FF6B6B;
+        }
+
+        .pulse-indicator {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #F0F0F0;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #333;
+        }
+
+        .close-button {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: #F5F5F5;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .weather-details {
+            padding: 20px;
+        }
+
+        .main-weather-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-weather-icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .modal-temperature {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .weather-description {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .condition-text {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .update-text {
+            font-size: 12px;
+            color: #999;
+            font-style: italic;
+        }
+
+        .temperature-scale {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background-color: #F8F9FA;
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .scale-item {
+            text-align: center;
+        }
+
+        .scale-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .scale-text {
+            font-size: 10px;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .scale-temp {
+            font-size: 8px;
+            color: #999;
+        }
+
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal.show {
+            display: flex;
+        }
+
+        .image-wrapper {
+            width: calc(100% - 40px);
+            max-height: calc(100% - 100px);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .image-header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 15px;
+        }
+
+        .image-close-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #FFFFFF;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            padding: 0 20px;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+
+        .image-footer {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .hint-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 380px) {
+            .nav-item {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .social-buttons {
+                width: 100%;
+            }
+            
+            .social-button {
+                width: 80%;
+            }
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #FF4444;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 4px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar-nav">
+                <button class="nav-item" onclick="scrollToSection('gonzaga')">
+                    O Gonzaga
+                </button>
+                <button class="nav-item" onclick="scrollToSection('quadras')">
+                    Quadras
+                </button>
+                <button class="nav-item" onclick="scrollToSection('contato')">
+                    Fale Conosco
+                </button>
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Seção O Gonzaga -->
+            <div class="section" id="gonzaga">
+                <div class="section-header">
+                    <h2 class="section-title">O Gonzaga</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="gonzaga-card">
+                    <div class="gonzaga-content">
+                        <p class="gonzaga-description">
+                            Bem-vindo ao Gonzaga! Aqui você encontra as melhores quadras esportivas 
+                            da região de Pelotas. Venha praticar seu esporte favorito em um ambiente 
+                            seguro e bem estruturado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Quadras -->
+            <div class="section" id="quadras">
+                <div class="section-header">
+                    <h2 class="section-title">Quadras</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="quadras-grid">
+                    <div class="quadra-card" onclick="openImageModal('./quadra1.jpeg')">
+                        <div class="quadra-image-container">
+                            <img src="./quadra1.jpeg" alt="Quadra Principal" class="quadra-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="quadra-placeholder" style="display: none;">Ver Foto 1</div>
+                            <div class="image-overlay">Ver Foto</div>
+                        </div>
+                        <div class="quadra-name">Quadra Principal</div>
+                    </div>
+                    <div class="quadra-card" onclick="openImageModal('./quadra2.jpeg')">
+                        <div class="quadra-image-container">
+                            <img src="./quadra2.jpeg" alt="Quadra de Areia" class="quadra-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="quadra-placeholder" style="display: none;">Ver Foto 2</div>
+                            <div class="image-overlay">Ver Foto</div>
+                        </div>
+                        <div class="quadra-name">Quadra de Areia</div>
+                    </div>
+                    <div class="quadra-card" onclick="openImageModal('./quadra3.jpeg')">
+                        <div class="quadra-image-container">
+                            <img src="./quadra3.jpeg" alt="Quadra Coberta" class="quadra-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="quadra-placeholder" style="display: none;">Ver Foto 3</div>
+                            <div class="image-overlay">Ver Foto</div>
+                        </div>
+                        <div class="quadra-name">Quadra Coberta</div>
+                    </div>
+                    <div class="quadra-card" onclick="openImageModal('./quadra4.jpeg')">
+                        <div class="quadra-image-container">
+                            <img src="./quadra4.jpeg" alt="Quadra de Treino" class="quadra-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="quadra-placeholder" style="display: none;">Ver Foto 4</div>
+                            <div class="image-overlay">Ver Foto</div>
+                        </div>
+                        <div class="quadra-name">Quadra de Treino</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Fale Conosco -->
+            <div class="section" id="contato">
+                <div class="section-header">
+                    <h2 class="section-title">Fale Conosco</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="contact-container">
+                    <p class="contact-subtitle">
+                        Entre em contato conosco através das redes sociais:
+                    </p>
+                    <div class="social-buttons">
+                        <a href="https://instagram.com/complexogonzaga" target="_blank" class="social-button instagram-button">
+                            <span class="social-icon">📸</span>
+                            Instagram
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61577099866861" target="_blank" class="social-button facebook-button">
+                            <span class="social-icon">📘</span>
+                            Facebook
+                        </a>
+                        <a href="https://wa.me/53991343579" target="_blank" class="social-button whatsapp-button">
+                            <span class="social-icon">💬</span>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather Card -->
+        <div class="weather-container">
+            <div class="weather-card" id="weatherCard" onclick="openWeatherModal()">
+                <div id="weatherContent">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Clima</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weather Modal -->
+    <div class="modal" id="weatherModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Clima em Pelotas</h3>
+                <button class="close-button" onclick="closeWeatherModal()">✕</button>
+            </div>
+            <div class="weather-details" id="weatherModalContent">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal" onclick="closeImageModal()">
+        <div class="image-wrapper" onclick="event.stopPropagation()">
+            <div class="image-header">
+                <button class="image-close-button" onclick="closeImageModal()">✕</button>
+            </div>
+            <div class="image-container">
+                <img id="modalImage" src="" alt="Quadra" class="modal-image">
+            </div>
+            <div class="image-footer">
+                <p class="hint-text">Toque fora da imagem para fechar</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Weather codes mapping
+        const pictocodeToString = {
+            1: 'Céu limpo',
+            2: 'Poucas nuvens',
+            3: 'Parcialmente nublado',
+            4: 'Nublado',
+            5: 'Nublado com chuvisco',
+            6: 'Nublado com chuva fraca',
+            7: 'Nublado com chuva',
+            8: 'Nublado com chuva forte',
+            9: 'Nublado com neve fraca',
+            10: 'Nublado com neve',
+            11: 'Nublado com neve forte',
+            12: 'Nublado com chuva congelante',
+            13: 'Nublado com granizo',
+            14: 'Nublado com trovoada',
+            15: 'Nevoeiro',
+            16: 'Nevoeiro congelante',
+            17: 'Céu limpo com trovoada',
+            18: 'Poucas nuvens com trovoada',
+            19: 'Parcialmente nublado com trovoada',
+            20: 'Nublado com trovoada',
+            21: 'Nublado com chuva fraca e trovoada',
+            22: 'Nublado com chuva e trovoada',
+            23: 'Nublado com chuva forte e trovoada',
+            24: 'Nublado com neve fraca e trovoada',
+            25: 'Nublado com neve e trovoada',
+            26: 'Nublado com neve forte e trovoada',
+            27: 'Nublado com chuva congelante e trovoada',
+            28: 'Nublado com granizo e trovoada',
+            29: 'Céu limpo com chuvisco',
+            30: 'Poucas nuvens com chuvisco',
+            31: 'Parcialmente nublado com chuvisco',
+            32: 'Céu limpo com chuva fraca',
+            33: 'Poucas nuvens com chuva fraca',
+            34: 'Parcialmente nublado com chuva fraca',
+            35: 'Céu limpo com chuva',
+            36: 'Poucas nuvens com chuva',
+            37: 'Parcialmente nublado com chuva',
+            38: 'Céu limpo com chuva forte',
+            39: 'Poucas nuvens com chuva forte',
+            40: 'Parcialmente nublado com chuva forte',
+            41: 'Céu limpo com neve fraca',
+            42: 'Poucas nuvens com neve fraca',
+            43: 'Parcialmente nublado com neve fraca',
+            44: 'Céu limpo com neve',
+            45: 'Poucas nuvens com neve',
+            46: 'Parcialmente nublado com neve',
+            47: 'Céu limpo com neve forte',
+            48: 'Poucas nuvens com neve forte',
+            49: 'Parcialmente nublado com neve forte',
+            50: 'Céu limpo com chuva congelante',
+            51: 'Poucas nuvens com chuva congelante',
+            52: 'Parcialmente nublado com chuva congelante',
+            53: 'Céu limpo com granizo',
+            54: 'Poucas nuvens com granizo',
+            55: 'Parcialmente nublado com granizo',
+            56: 'Céu limpo com tempestade de areia/poeira',
+            57: 'Poucas nuvens com tempestade de areia/poeira',
+            58: 'Parcialmente nublado com tempestade de areia/poeira',
+            59: 'Nublado com tempestade de areia/poeira',
+            60: 'Céu limpo com tornado',
+            61: 'Poucas nuvens com tornado',
+            62: 'Parcialmente nublado com tornado',
+            63: 'Nublado com tornado'
+        };
+
+        // Weather API configuration
+        const PELOTAS_LAT = -31.77;
+        const PELOTAS_LON = -52.34;
+        const METEOBLUE_API_KEY = 'W1HFf0IOLYdtAJlG';
+        const METEOBLUE_API_URL = `https://my.meteoblue.com/packages/current?lat=${PELOTAS_LAT}&lon=${PELOTAS_LON}&apikey=${METEOBLUE_API_KEY}&format=json`;
+
+        // Weather data storage
+        let currentWeatherData = null;
+
+        // Utility functions
+        function getWeatherIcon(condition) {
+            if (!condition) return '❓';
+            
+            const conditionLower = condition.toLowerCase();
+            
+            if (conditionLower.includes('limpo') || conditionLower.includes('claro')) return '☀️';
+            if (conditionLower.includes('nublado') || conditionLower.includes('nuvens')) return '☁️';
+            if (conditionLower.includes('chuva')) return '🌧️';
+            if (conditionLower.includes('trovoada')) return '⛈️';
+            if (conditionLower.includes('neve')) return '❄️';
+            if (conditionLower.includes('nevoeiro')) return '🌫️';
+            if (conditionLower.includes('parcialmente')) return '⛅';
+            
+            return '🌤️';
+        }
+
+        function getTemperatureColor(temp) {
+            if (!temp) return '#666';
+            
+            if (temp <= 10) return '#4A90E2';
+            if (temp <= 20) return '#50C878';
+            if (temp <= 30) return '#FFB84D';
+            return '#FF6B6B';
+        }
+
+        // Fetch weather data
+        async function fetchWeatherData() {
+            try {
+                const response = await fetch(METEOBLUE_API_URL);
+                
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (!data || !data.data_current) {
+                    throw new Error('Dados da API inválidos.');
+                }
+
+                const temperatura = data.data_current.temperature;
+                const pictocode = data.data_current.pictocode;
+
+                if (temperatura == null) {
+                    throw new Error('Temperatura não encontrada.');
+                }
+
+                const condicaoClima = pictocodeToString[pictocode] || 'Condição Desconhecida';
+
+                return {
+                    temperatura,
+                    condicaoClima
+                };
+            } catch (error) {
+                console.error('Erro ao buscar dados do clima:', error);
+                throw error;
+            }
+        }
+
+        // Update weather card
+        function updateWeatherCard(data, loading = false, error = null) {
+            const weatherCard = document.getElementById('weatherCard');
+            const weatherContent = document.getElementById('weatherContent');
+
+            if (loading) {
+                weatherCard.className = 'weather-card';
+                weatherContent.innerHTML = `
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Clima</div>
+                `;
+                return;
+            }
+
+            if (error) {
+                weatherCard.className = 'weather-card error';
+                weatherContent.innerHTML = `
+                    <span class="weather-icon">❌</span>
+                    <div class="error-text">Erro</div>
+                `;
+                return;
+            }
+
+            if (data) {
+                const icon = getWeatherIcon(data.condicaoClima);
+                const color = getTemperatureColor(data.temperatura);
+                
+                weatherCard.className = 'weather-card active';
+                weatherContent.innerHTML = `
+                    <span class="weather-icon">${icon}</span>
+                    <div class="temperature-text" style="color: ${color}">${Math.round(data.temperatura)}°</div>
+                    <div class="location-text">Pelotas</div>
+                    <div class="pulse-indicator"></div>
+                `;
+            }
+        }
+
+        // Weather modal functions
+        function openWeatherModal() {
+            if (!currentWeatherData) return;
+            
+            const modal = document.getElementById('weatherModal');
+            const modalContent = document.getElementById('weatherModalContent');
+            
+            const icon = getWeatherIcon(currentWeatherData.condicaoClima);
+            const color = getTemperatureColor(currentWeatherData.temperatura);
+            
+            modalContent.innerHTML = `
+                <div class="main-weather-info">
+                    <span class="modal-weather-icon">${icon}</span>
+                    <div class="modal-temperature" style="color: ${color}">${currentWeatherData.temperatura.toFixed(1)}°C</div>
+                </div>
+                
+                <div class="weather-description">
+                    <div class="condition-text">${currentWeatherData.condicaoClima}</div>
+                    <div class="update-text">Dados atualizados em tempo real</div>
+                </div>
+
+                <div class="temperature-scale">
+                    <div class="scale-item">
+                        <span class="scale-icon">🥶</span>
+                        <div class="scale-text">Frio</div>
+                        <div class="scale-temp">≤10°</div>
+                    </div>
+                    <div class="scale-item">
+                        <span class="scale-icon">😊</span>
+                        <div class="scale-text">Agradável</div>
+                        <div class="scale-temp">11-20°</div>
+                    </div>
+                    <div class="scale-item">
+                        <span class="scale-icon">☀️</span>
+                        <div class="scale-text">Quente</div>
+                        <div class="scale-temp">21-30°</div>
+                    </div>
+                    <div class="scale-item">
+                        <span class="scale-icon">🔥</span>
+                        <div class="scale-text">Muito Quente</div>
+                        <div class="scale-temp">≥31°</div>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.add('show');
+        }
+
+        function closeWeatherModal() {
+            const modal = document.getElementById('weatherModal');
+            modal.classList.remove('show');
+        }
+
+        // Image modal functions
+        function openImageModal(imageUrl) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalImage.src = imageUrl;
+            modal.classList.add('show');
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+        }
+
+        // Navigation function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Initialize weather data
+        async function initWeather() {
+            updateWeatherCard(null, true); // Show loading
+            
+            try {
+                const weatherData = await fetchWeatherData();
+                currentWeatherData = weatherData;
+                updateWeatherCard(weatherData);
+            } catch (error) {
+                updateWeatherCard(null, false, error.message);
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            initWeather();
+            
+            // Close modals when clicking outside
+            document.getElementById('weatherModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeWeatherModal();
+                }
+            });
+            
+            document.getElementById('imageModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeImageModal();
+                }
+            });
+            
+            // Close modals with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeWeatherModal();
+                    closeImageModal();
+                }
+            });
+        });
+
+        // Update weather data every 5 minutes
+        setInterval(initWeather, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
