@@ -213,14 +213,15 @@
         .social-buttons {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
             align-items: center;
         }
 
         @media (min-width: 600px) {
             .social-buttons {
                 flex-direction: row;
-                justify-content: space-around;
+                justify-content: center;
+                gap: 20px;
             }
         }
 
@@ -228,37 +229,57 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 24px;
+            padding: 12px 24px;
             border-radius: 25px;
             text-decoration: none;
             color: #FFFFFF;
             font-weight: 700;
             font-size: 16px;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
             min-width: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-button:hover::before {
+            opacity: 1;
         }
 
         .social-button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
 
         .instagram-button {
-            background-color: #E4405F;
+            background: linear-gradient(45deg, #E4405F, #C13584);
         }
 
         .facebook-button {
-            background-color: #1877F2;
+            background: linear-gradient(45deg, #1877F2, #42A5F5);
         }
 
         .whatsapp-button {
-            background-color: #25D366;
+            background: linear-gradient(45deg, #25D366, #128C7E);
         }
 
-        .social-icon {
-            font-size: 18px;
-            margin-right: 8px;
+        .social-icon-img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
         }
 
         /* Weather Card */
@@ -672,15 +693,15 @@
                     </p>
                     <div class="social-buttons">
                         <a href="https://instagram.com/complexogonzaga" target="_blank" class="social-button instagram-button">
-                            <span class="social-icon">📸</span>
+                            <img src="./instagram.png" alt="Instagram" class="social-icon-img">
                             Instagram
                         </a>
                         <a href="https://www.facebook.com/profile.php?id=61577099866861" target="_blank" class="social-button facebook-button">
-                            <span class="social-icon">📘</span>
+                            <img src="./facebook.png" alt="Facebook" class="social-icon-img">
                             Facebook
                         </a>
                         <a href="https://wa.me/53991343579" target="_blank" class="social-button whatsapp-button">
-                            <span class="social-icon">💬</span>
+                            <img src="./whatsapp.png" alt="WhatsApp" class="social-icon-img">
                             WhatsApp
                         </a>
                     </div>
